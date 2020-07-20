@@ -1,0 +1,8 @@
+# Baby Book
+
+# Event
+name: the name of the event
+description: the description of the event
+date_added: the date the event was created
+date_event: the date the event happened
+is_publish: the publish status of the event, the default is draft
