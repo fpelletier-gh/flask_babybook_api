@@ -1,3 +1,6 @@
+from extensions import db
+
+
 event_list = []
 
 
@@ -9,21 +12,26 @@ def get_last_id():
     return last_event.id + 1
 
 
-class Event:
-    def __init__(self, name, description, date_added, date_event):
-        self.id = get_last_id()
-        self.name = name
-        self.description = description
-        self.date_added = date_added
-        self.date_event = date_event
-        self.is_publish = False
+class Event(db.Model):
+    __table_name__ = "event"
 
-    @property
-    def data(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "description": self.description,
-            "date_added": self.date_added,
-            "date_event": self.date_event,
-        }
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.String(100), nullable=False)
+
+    description = db.Column(db.String(200))
+
+    is_publish = db.Column(db.Boolean(), default=False)
+
+    event_date = db.Column(db.String(100))
+
+    created_at = db.Column(db.DateTime(), nullable=False, server_default=db.func.now())
+
+    updated_at = db.Column(
+        db.DateTime(),
+        nullable=False,
+        server_default=db.func.now(),
+        onupdate=db.func.now(),
+    )
+
+    user_id = db.Column(db.Integer(), db.ForeignKey("user.id"))
