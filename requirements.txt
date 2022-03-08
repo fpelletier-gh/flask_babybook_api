@@ -12,7 +12,7 @@ Flask==1.1.2
 Flask-Migrate==2.5.3
 Flask-RESTful==0.3.8
 Flask-SQLAlchemy==2.4.4
-httpie==2.2.0
+httpie==3.1.0
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.2
